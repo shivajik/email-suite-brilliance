@@ -135,6 +135,9 @@ export default function Index() {
             </a>
 
             <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
+              <a className="hover:text-foreground" href="#top">
+                Home
+              </a>
               <a className="hover:text-foreground" href="#features">
                 Features
               </a>
