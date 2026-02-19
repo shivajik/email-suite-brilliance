@@ -1,5 +1,15 @@
+import * as React from "react";
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import {
   ArrowRight,
@@ -7,6 +17,7 @@ import {
   Globe,
   Lock,
   Mail,
+  Menu,
   MessagesSquare,
   ShieldCheck,
   Sparkles,
@@ -156,10 +167,53 @@ export default function Index() {
               <Button variant="outline" className="hidden sm:inline-flex">
                 Contact sales
               </Button>
-              <Button variant="hero" className="group">
+              <Button variant="hero" className="group hidden sm:inline-flex">
                 Request a demo
                 <ArrowRight className="transition-transform group-hover:translate-x-0.5" />
               </Button>
+
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="outline" size="icon" className="md:hidden" aria-label="Open menu">
+                    <Menu className="h-5 w-5" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[85vw] sm:max-w-sm">
+                  <SheetHeader>
+                    <SheetTitle>Menu</SheetTitle>
+                  </SheetHeader>
+
+                  <div className="mt-6 flex flex-col gap-2">
+                    {[
+                      { label: "Home", href: "#top" },
+                      { label: "Features", href: "#features" },
+                      { label: "Security", href: "#security" },
+                      { label: "Pricing", href: "#pricing" },
+                      { label: "FAQ", href: "#faq" },
+                    ].map((l) => (
+                      <SheetClose asChild key={l.href}>
+                        <a href={l.href} className="rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent">
+                          {l.label}
+                        </a>
+                      </SheetClose>
+                    ))}
+
+                    <div className="mt-4 grid gap-2">
+                      <SheetClose asChild>
+                        <Button variant="outline" className="w-full">
+                          Contact sales
+                        </Button>
+                      </SheetClose>
+                      <SheetClose asChild>
+                        <Button variant="hero" className="w-full">
+                          Request a demo
+                          <ArrowRight />
+                        </Button>
+                      </SheetClose>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </header>
