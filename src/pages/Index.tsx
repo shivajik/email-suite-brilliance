@@ -13,7 +13,9 @@ import {
 import { cn } from "@/lib/utils";
 import {
   ArrowRight,
+  Calendar,
   CheckCircle2,
+  FileText,
   Globe,
   Lock,
   Mail,
@@ -152,6 +154,9 @@ export default function Index() {
               <a className="hover:text-foreground" href="#features">
                 Features
               </a>
+              <a className="hover:text-foreground" href="#office-tools">
+                Office tools
+              </a>
               <a className="hover:text-foreground" href="#security">
                 Security
               </a>
@@ -187,6 +192,7 @@ export default function Index() {
                     {[
                       { label: "Home", href: "#top" },
                       { label: "Features", href: "#features" },
+                      { label: "Office tools", href: "#office-tools" },
                       { label: "Security", href: "#security" },
                       { label: "Pricing", href: "#pricing" },
                       { label: "FAQ", href: "#faq" },
@@ -374,6 +380,82 @@ export default function Index() {
                       <div>
                         <h3 className="text-base font-semibold">{f.title}</h3>
                         <p className="mt-2 text-sm text-muted-foreground">{f.desc}</p>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Office tools */}
+          <section id="office-tools" className="border-t">
+            <div className="container py-16 sm:py-20">
+              <SectionHeading
+                eyebrow="Office tools"
+                title="Mail, calendar, docs, and chat—built to work together"
+                description="Give teams a consistent daily toolkit while keeping governance and admin controls centralized."
+              />
+
+              <div className="mt-10 grid gap-4 lg:grid-cols-2">
+                {[
+                  {
+                    icon: Mail,
+                    title: "Mail",
+                    desc: "Fast inbox, shared mailboxes, and predictable delivery.",
+                    bullets: [
+                      "Shared mailboxes and delegation",
+                      "Rules, routing, and transport controls",
+                      "Spam + phishing protection",
+                    ],
+                  },
+                  {
+                    icon: Calendar,
+                    title: "Calendar",
+                    desc: "Scheduling that works across teams and time zones.",
+                    bullets: [
+                      "Shared calendars and resource booking",
+                      "Time-zone aware availability",
+                      "Invite controls and external sharing policies",
+                    ],
+                  },
+                  {
+                    icon: FileText,
+                    title: "Docs",
+                    desc: "Collaborate on documents with policy baked in.",
+                    bullets: [
+                      "Real-time co-editing and comments",
+                      "Sharing controls and access reviews",
+                      "Retention-aware document history",
+                    ],
+                  },
+                  {
+                    icon: MessagesSquare,
+                    title: "Chat",
+                    desc: "Channels and DMs with enterprise governance.",
+                    bullets: [
+                      "Channels, DMs, and threaded discussions",
+                      "Message retention and export controls",
+                      "Admin visibility with audit trails",
+                    ],
+                  },
+                ].map((t) => (
+                  <Card key={t.title} className="p-7 shadow-soft">
+                    <div className="flex items-start gap-4">
+                      <div className="grid h-11 w-11 place-items-center rounded-xl bg-accent">
+                        <t.icon className="h-5 w-5 text-accent-foreground" />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-lg font-semibold tracking-tight">{t.title}</h3>
+                        <p className="mt-2 text-sm text-muted-foreground">{t.desc}</p>
+                        <ul className="mt-5 space-y-3 text-sm">
+                          {t.bullets.map((b) => (
+                            <li key={b} className="flex items-start gap-2">
+                              <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary" />
+                              <span>{b}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
                   </Card>
